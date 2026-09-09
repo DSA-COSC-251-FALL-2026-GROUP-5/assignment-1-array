@@ -37,5 +37,10 @@ class UsingUnorderedArray {
     System.out.printf("Right shifting to create space at index %d\n", rightShiftIndex);
     unorderedArray.printInfo();
 
+    int valueToDelete = 0;
+    System.out.println(unorderedArray.delete(10));
+    unorderedArray.printInfo();
+    System.out.println(unorderedArray.delete(7));
+    unorderedArray.printInfo();
   }
 }
