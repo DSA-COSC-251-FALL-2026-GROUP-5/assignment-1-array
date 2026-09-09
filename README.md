@@ -26,10 +26,10 @@ idk...
 
 # TODO
 
-- [] write `junit` tests
-- [] create `UnorderedArray` class
-- [] create `OrderedArray` class
-- [] structure everything correctly
+- [] write a robust `junit` tests for all methods
+- [x] create `UnorderedArray` class
+- [x] create `OrderedArray` class
+- [x] structure everything correctly
 - [] fullfill the following project requirements:
 
 ## Project requirements
@@ -49,7 +49,7 @@ of arr[].~~
 3. Both classes should implement an insert(int x) method to insert an integer into arr[]. If the
 array is full, the method should automatically resize the array.
 
-- unordered array
+~~- unordered array~~
 - ordered array
 
 ~~4. Both classes should implement a delete(int x) method that removes the first occurrence of an
@@ -59,6 +59,9 @@ remain contiguous.~~
 
 5. Both classes should implement a find(int x) method that searches for an integer in arr[]. If
 the integer exists, return its index; otherwise, return -1.
+
+~~- unordered array~~
+- ordered array
 
 ~~6. Both classes should implement a get(int index) method that returns the integer at the given in-
 dex in arr[]. If the index is out of bounds, the method should throw an IndexOutOfBoundsException.

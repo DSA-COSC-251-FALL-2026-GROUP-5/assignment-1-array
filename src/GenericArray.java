@@ -96,15 +96,39 @@ abstract class GenericArray {
     arr = newArr;
   }
 
-  void leftShift(int i) {
+  void leftShift(int index) {
     // a utility function that imagines that there's a hole at index i, and shifts
     // everything beyond it to the left to "fill the hole"
+
+    // assume that error checking has been done prior
+    if (occupiedAmount <= 0) {
+      return;
+    }
+
+    for (int i = index + 1; i < occupiedAmount; i++) {
+      arr[i - 1] = arr[i];
+    }
+
+    arr[occupiedAmount - 1] = null;
+    occupiedAmount--;
   }
 
-  void rightShift(int i) {
+  void rightShift(int index) {
     // a utility function that imagines that we need a hole at index i, and shifts
     // everything from index i to the right
 
+    // we assume that we've already checked that it's safe to right shift without
+    // loss
+
+    if (occupiedAmount <= 0) {
+      return;
+    }
+
+    for (int i = occupiedAmount; i > index; i--) {
+      arr[i] = arr[i - 1];
+    }
+    // assume that we will replace the space with something else later
+    occupiedAmount++;
   }
 
   int nextResizeAmount(int size) {
@@ -115,7 +139,7 @@ abstract class GenericArray {
     return 2 * size;
   }
 
-  void show() {
+  void printArray() {
     // an extra utility function for debugging and testing purposes, which just
     // prints the entire array as a string to standard out
     if (arr.length == 0) {
@@ -131,5 +155,11 @@ abstract class GenericArray {
       }
       System.out.println();
     }
+  }
+
+  void printInfo() {
+    printArray();
+    System.out.printf("Unordered array size: %d\n", size());
+    System.out.printf("Unordered array occupied: %d\n", count());
   }
 }
