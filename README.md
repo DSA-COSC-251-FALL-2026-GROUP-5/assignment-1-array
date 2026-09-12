@@ -20,6 +20,12 @@ or
 ./run UnorderedArray
 ```
 
+To run the test suite:
+
+```
+./run_test UnorderedArrayTest && ./run_test OrderedArrayTest
+```
+
 ## Windows
 
 idk...
@@ -30,7 +36,7 @@ idk...
 - [x] create `UnorderedArray` class
 - [x] create `OrderedArray` class
 - [x] structure everything correctly
-- [] fullfill the following project requirements:
+- [x] fullfill the following project requirements:
 
 ## Project requirements
 
@@ -46,22 +52,22 @@ necessary.~~
 ~~2. Both classes should have a constructor that accepts an integer parameter used to initialize the size
 of arr[].~~
 
-3. Both classes should implement an insert(int x) method to insert an integer into arr[]. If the
-array is full, the method should automatically resize the array.
+~~3. Both classes should implement an insert(int x) method to insert an integer into arr[]. If the
+array is full, the method should automatically resize the array.~~
 
 ~~- unordered array~~
-- ordered array
+~~- ordered array~~
 
 ~~4. Both classes should implement a delete(int x) method that removes the first occurrence of an
 integer from arr[] if it exists and returns true. If the integer does not exist, the method should
 return false. After deletion, remaining elements should shift left so that all non-null elements
 remain contiguous.~~
 
-5. Both classes should implement a find(int x) method that searches for an integer in arr[]. If
-the integer exists, return its index; otherwise, return -1.
+~~5. Both classes should implement a find(int x) method that searches for an integer in arr[]. If
+the integer exists, return its index; otherwise, return -1.~~
 
 ~~- unordered array~~
-- ordered array
+~~- ordered array
 
 ~~6. Both classes should implement a get(int index) method that returns the integer at the given in-
 dex in arr[]. If the index is out of bounds, the method should throw an IndexOutOfBoundsException.
@@ -81,7 +87,11 @@ currently stored in arr[].~~
 newSize. Existing elements and their order should be preserved as much as possible. Any elements
 beyond the new size should be discarded.~~
 
-10. In UnorderedArray, arr[] remains unsorted. In OrderedArray, arr[] must always remain sorted
-in ascending order.
+~~10. In UnorderedArray, arr[] remains unsorted. In OrderedArray, arr[] must always remain sorted
+in ascending order.~~
 
-11. Each method must include a short comment specifying and explaining its time complexity.
+~~11. Each method must include a short comment specifying and explaining its time complexity.~~
+
+# AI usage
+
+No AI was used when writing the implementation of `GenericArray.java`, `UnorderedArray.java` and `OrderedArray.java`. The test suite `UnorderedArrayTest.java` and `OrderedArrayTest.java` was AI generated, using *OpenCode* with the *Ling 3.0 Flash Lin Free* model. The entire *OpenCode* session is linked [here](./opencode_session.json)

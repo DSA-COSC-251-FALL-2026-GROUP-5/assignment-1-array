@@ -35,7 +35,6 @@ public class OrderedArray extends GenericArray {
       resize(nextResizeAmount(capacity));
     }
     int insertionIndex = binarySearch(x);
-    System.out.println(insertionIndex);
     // even if we're at the end, a rightShift in this case does nothing.
     rightShift(insertionIndex);
     arr[insertionIndex] = x;
