@@ -120,14 +120,15 @@ abstract class GenericArray {
     // we assume that we've already checked that it's safe to right shift without
     // loss
 
-    if (occupiedAmount <= 0) {
-      return;
-    }
-
-    for (int i = occupiedAmount; i > index; i--) {
-      arr[i] = arr[i - 1];
+    if (!(occupiedAmount <= 0)) {
+      for (int i = occupiedAmount; i > index; i--) {
+        arr[i] = arr[i - 1];
+      }
     }
     // assume that we will replace the space with something else later
+    // NOTE: In the case that we're rightShifting beyond occupiedAmount, we'll also
+    // increment occupiedAmount and trust that the reason why we called rightShift
+    // in the first place is to make space
     occupiedAmount++;
   }
 
@@ -137,6 +138,44 @@ abstract class GenericArray {
 
     // for now, we'll just arbitrarily resize it to twice the current size.
     return 2 * size;
+  }
+
+  int binarySearch(int x) {
+    int leftPtr = 0;
+    int rightPtr = occupiedAmount;
+    // we're searching in the range of [0, occupiedAmount). The reason for this
+    // asymmetry is because, we want the index to be the same as doing linear search
+    // of x on an ordered array, that is:
+    // - we want the first instance of x if it exists
+    // - if it doesn't exist, we want the index of the next greatest thing (which
+    // works the same for the edge case when x > max(arr))
+
+    int midPtr;
+    while (leftPtr < rightPtr) {
+      // when they're equal, we have something like: [leftPtr, leftPtr), meaning that
+      // it doesn't exists because that range is just the null set. In our case
+      // though, we will terminate and return the value of leftPtr.
+
+      midPtr = (leftPtr + rightPtr) / 2;
+      // we will update leftPtr such that it's somewhat lazy, meaning that it will
+      // only move when we know that arr[midPtr] < x
+      if (arr[midPtr] < x) {
+        leftPtr = midPtr + 1;
+        // this means that there's actually an upper bound on arr[leftPtr], that is,
+        // arr[leftPtr] <= x through the whole algorithm, and in the case that
+        // arr[leftPtr] == x, it has to be case that it's the first instance because the
+        // step before that must have had arr[midPtr] < x, but then, arr[midPtr + 1] ==
+        // x. After that happens, leftPtr will never be updated again since this
+        // condition would never be satisifed (and this condition is the only place
+        // where leftPtr gets updated).
+      } else {
+        // if arr[midPtr] >= x, then we still want to preserve the case that arr[midPtr]
+        // == x. doing rightPtr = midPtr - 1 would be too aggressive because it might be
+        // the case that arr[midPtr - 1] < x.
+        rightPtr = midPtr;
+      }
+    }
+    return leftPtr;
   }
 
   void printArray() {

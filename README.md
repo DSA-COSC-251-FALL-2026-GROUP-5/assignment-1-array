@@ -26,7 +26,7 @@ idk...
 
 # TODO
 
-- [] write a robust `junit` tests for all methods
+~~- [] write a robust `junit` tests for all methods~~
 - [x] create `UnorderedArray` class
 - [x] create `OrderedArray` class
 - [x] structure everything correctly
