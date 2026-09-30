@@ -2,7 +2,8 @@ abstract class GenericArray {
   // this class will contain methods that will be inherited by both OrderedArray
   // and UnorderedArray because they share a similar constructor, and utility
   // functions such
-  // as .show
+  // as .show and more. For more information, the github link is here:
+  // https://github.com/DSA-COSC-251-FALL-2026-GROUP-5/assignment-1-array
 
   // protected keyword is used because we want the child classes to inherit it
   protected Integer[] arr;
